@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="https://storage.googleapis.com/golden-wind/bootcamp-gostack/header-desafio-conceitos.png" alt="logo-django" border="0">
   <h1 align="center">API de Delivery em Tempo Real</h1>
   <p align="center">
     Um backend robusto para uma aplicação de delivery, construído com Django, PostgreSQL e Firebase.
@@ -17,7 +16,6 @@
 ## 📖 Tabela de Conteúdos
 * [Sobre o Projeto](#-sobre-o-projeto)
 * [Funcionalidades](#-funcionalidades-principais)
-* [Arquitetura e Tech Stack](#-arquitetura-e-tech-stack)
 * [Começando](#-começando)
 * [Endpoints da API](#-endpoints-da-api)
 * [Como Testar](#-como-testar)
@@ -46,25 +44,22 @@ Este projeto é o backend completo para uma aplicação de delivery de comida, s
 
 ---
 
-## 🛠️ Arquitetura e Tech Stack
+|
 
-A arquitetura foi projetada para ser escalável e eficiente, separando as responsabilidades.
 
-   Cliente (Mobile/Web)
-          |
-          |--- Requisições HTTP/S ---> [ Firebase Hosting ] ---> [ Google Cloud Run ]
-          |                                                           |
-          |                                                     [ Django API ]
-          |                                                     /           \
-          |                                                    /             \
-          |--- Conexão Realtime ---> [ Firebase Realtime DB ]  <-- [ PostgreSQL (Docker) ]
+### Explicação do Fluxo
 
-As principais tecnologias utilizadas foram:
+1.  **Requisições HTTP para a API Django:** Operações críticas (login, criar pedidos, gerenciar cardápios) são enviadas para a API Django. O Django processa a lógica de negócio e salva os dados no **PostgreSQL**.
+2.  **Envio de Localização (Gateway):** O entregador envia suas coordenadas para um endpoint seguro no Django. A API valida a requisição e atua como um gateway, repassando e salvando os dados no **Firebase Realtime Database**.
+3.  **Rastreamento em Tempo Real:** O cliente estabelece uma conexão direta com o **Firebase** para "escutar" as atualizações de localização, permitindo um rastreamento no mapa fluido e em tempo real, sem sobrecarregar o servidor Django.
+
+### Tecnologias Utilizadas
 
 * **Backend:** Django, Django REST Framework
-* **Banco de Dados:** PostgreSQL (gerenciado via Docker)
+* **Banco de Dados Relacional:** PostgreSQL
+* **Banco de Dados Realtime:** Firebase Realtime Database
 * **Autenticação:** djangorestframework-simplejwt
-* **Funcionalidades Real-time:** Firebase Admin SDK (Realtime Database)
+* **Containerização:** Docker
 * **Variáveis de Ambiente:** python-dotenv
 
 ---
@@ -75,7 +70,7 @@ Siga as instruções para configurar e rodar o projeto em seu ambiente local.
 
 ### **Pré-requisitos**
 * Python 3.10+
-* Docker e Docker Compose
+* Docker
 * Uma conta no Firebase
 
 ### **Instalação**
@@ -85,10 +80,8 @@ Siga as instruções para configurar e rodar o projeto em seu ambiente local.
     cd NOME_DO_REPOSITORIO
     ```
 2.  **Crie o arquivo de variáveis de ambiente:**
-    * Crie uma cópia do arquivo `.env.example` e renomeie para `.env`.
-    * Preencha o arquivo `.env` com suas credenciais do PostgreSQL e do Firebase.
+    * Crie um arquivo chamado `.env` na raiz do projeto e preencha com suas credenciais.
     
-    **.env.example**
     ```env
     # PostgreSQL
     DB_NAME=dbdelivery
@@ -103,8 +96,7 @@ Siga as instruções para configurar e rodar o projeto em seu ambiente local.
     ```
 
 3.  **Adicione suas credenciais do Firebase:**
-    * Baixe o arquivo JSON de credenciais do seu projeto no Firebase (em "Configurações do Projeto" > "Contas de serviço").
-    * Salve-o na raiz do projeto com o nome `firebase-credentials.json`.
+    * Baixe o arquivo JSON de credenciais do seu projeto no Firebase e salve-o na raiz do projeto como `firebase-credentials.json`.
 
 4.  **Crie o ambiente virtual e instale as dependências:**
     ```bash
@@ -210,11 +202,15 @@ Para interagir com a API, utilize uma ferramenta como [Insomnia](https://insomni
 ---
 
 ## 📄 Licença
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações se desejar adicionar um.
 
 ---
 
 ## 👨‍💻 Autor
-**[Seu Nome Aqui]**
-* **LinkedIn:** [https://linkedin.com/in/seu-usuario](https://linkedin.com/in/seu-usuario)
-* **GitHub:** [@seu-usuario](https://github.com/seu-usuario)
+
+**Gledyson Ferreira**
+
+Projeto desenvolvido para demonstrar a criação de uma API complexa e moderna, aplicando conceitos de arquitetura de software, segurança e integração de tecnologias.
+
+* **LinkedIn:** [linkedin.com/in/Gledyson Cruz](https://linkedin.com/in/gledyson007)
+* **GitHub:** [@Gledyson Cruz](https://github.com/gledyson007)
