@@ -1,0 +1,20 @@
+# Ambiente virtual
+.venv/
+__pycache__/
+
+# Arquivos de segredo e configuração local
+.env
+firebase-credentials.json
+
+# Arquivos do Git
+.git
+.gitignore
+.gitattributes
+
+# Arquivos do Docker (para não se copiar)
+Dockerfile
+.dockerignore
+
+# Outros
+*.pyc
+*.swp

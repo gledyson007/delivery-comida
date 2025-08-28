@@ -1,4 +1,4 @@
-hanyio==4.10.0
+anyio==4.10.0
 asgiref==3.9.1
 CacheControl==0.14.3
 cachetools==5.5.2
@@ -8,6 +8,7 @@ charset-normalizer==3.4.3
 cryptography==45.0.6
 Django==5.2.5
 djangorestframework==3.16.1
+djangorestframework_simplejwt==5.5.1
 firebase_admin==7.1.0
 google-api-core==2.25.1
 google-auth==2.40.3
@@ -19,6 +20,7 @@ google-resumable-media==2.7.2
 googleapis-common-protos==1.70.0
 grpcio==1.74.0
 grpcio-status==1.74.0
+gunicorn==23.0.0
 h11==0.16.0
 h2==4.3.0
 hpack==4.1.0
@@ -27,6 +29,7 @@ httpx==0.28.1
 hyperframe==6.1.0
 idna==3.10
 msgpack==1.1.1
+packaging==25.0
 proto-plus==1.26.1
 protobuf==6.32.0
 psycopg2-binary==2.9.10
